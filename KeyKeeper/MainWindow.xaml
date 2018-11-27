@@ -1,0 +1,63 @@
+﻿<Window x:Class="KeyKeeper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyKeeper"
+        mc:Ignorable="d"
+        Title="KeyKeeper" Height="450" Width="800" UseLayoutRounding="True">
+    <Grid>
+        <TabControl TabStripPlacement="Left">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Padding" Value="3" />
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Главная">
+              <Grid>
+                  <Grid.RowDefinitions>
+                      <RowDefinition Height="40"></RowDefinition>
+                      <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                  <Grid Name="Rooms" Grid.Row="1" Initialized="FrameworkElement_OnInitialized" ShowGridLines="True">
+                      <Grid.ColumnDefinitions>
+                          <ColumnDefinition></ColumnDefinition>
+                          <ColumnDefinition></ColumnDefinition>
+                          <ColumnDefinition></ColumnDefinition>
+                          <ColumnDefinition></ColumnDefinition>
+                          <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                      <Grid.RowDefinitions>
+                          <RowDefinition></RowDefinition>
+                          <RowDefinition></RowDefinition>
+                          <RowDefinition></RowDefinition>
+                          <RowDefinition></RowDefinition>
+                          <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                  </Grid>
+              </Grid>
+            </TabItem>
+            <TabItem Header="История операций" GotFocus="UIElement_OnGotFocus">
+                <DataGrid Name="OperationsGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер операции" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Пользователь" Binding="{Binding User}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Тип операции" Binding="{Binding Type}" Width="100"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Аудитория" Binding="{Binding RoomId}" Width="70"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Дата операции" Binding="{Binding OperationDate}" Width="200"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Администратор" Binding="{Binding Admin}" Width="*"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Отчёты">
+                <Label Content="Content goes here..." />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
