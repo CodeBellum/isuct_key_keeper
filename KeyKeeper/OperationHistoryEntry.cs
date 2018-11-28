@@ -8,7 +8,15 @@ namespace KeyKeeper
         {
             this.RoomId = operation.RoomId;
             this.User = operation.User;
-            this.Type = operation.Type == OperationType.GetKey ? "Взял ключ" : "Вернул ключ";
+            if (operation.IsSuccess)
+            {
+                this.Type = operation.Type == OperationType.GetKey ? "Взял ключ" : "Вернул ключ";
+            }
+            else
+            {
+                this.Type = operation.Type == OperationType.GetKey ? "Отказано в выдаче ключа" : "Ошибка";
+            }
+            
             this.OperationDate = operation.OperationDate;
             this.Id = id;
             this.Admin = admin;

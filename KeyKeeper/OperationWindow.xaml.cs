@@ -23,7 +23,7 @@ namespace KeyKeeper
 
         private void OperationNameButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Operation operation = new Operation(this.operationInstance.RoomId, this.tbUser.Text, this.operationInstance.Type);
+            Operation operation = new Operation(this.operationInstance.RoomId, this.tbUser.Text, this.operationInstance.Type, true);
             OperationsKeeper.Instance.AddOperation(operation);
             this.DialogResult = true;
             this.Close();
@@ -31,6 +31,8 @@ namespace KeyKeeper
 
         private void RejectButton_OnClick(object sender, RoutedEventArgs e)
         {
+            Operation operation = new Operation(this.operationInstance.RoomId, this.tbUser.Text, this.operationInstance.Type, false);
+            OperationsKeeper.Instance.AddOperation(operation);
             this.DialogResult = false;
             this.Close();
         }

@@ -71,7 +71,7 @@ namespace KeyKeeper
             Operation operation = new Operation(
                 roomId,
                 isEmpty ? "Нектототамов Н.Н." : OperationsKeeper.Instance.GetLastGetKeyOperationForRoom(roomId).User, 
-                isEmpty ? OperationType.GetKey : OperationType.ReturnKey);
+                isEmpty ? OperationType.GetKey : OperationType.ReturnKey, true);
 
             bool result = new OperationWindow(operation).ShowDialog() ?? false;
 
