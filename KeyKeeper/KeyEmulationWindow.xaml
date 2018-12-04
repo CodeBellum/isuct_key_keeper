@@ -1,0 +1,35 @@
+﻿<Window x:Class="KeyKeeper.KeyEmulationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyKeeper"
+        mc:Ignorable="d"
+        Title="KeyEmulationWindow" Height="200" Width="230">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="PasswordBox">
+                <Setter Property="FontSize" Value="18"></Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"></Setter>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="18"></Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="18"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">ФИО:</Label>
+            <TextBox Name="tbName" HorizontalAlignment="Center" Width="200" VerticalAlignment="Center"></TextBox>
+            <CheckBox Name="HasCard" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">Есть карточка</CheckBox>
+        </StackPanel>
+        <Button Grid.Row="1" Name="btnLogin" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Click="BtnLogin_OnClick">Войти</Button>
+    </Grid>
+</Window>

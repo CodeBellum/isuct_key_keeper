@@ -20,6 +20,8 @@ namespace KeyKeeper
             this.OperationDate = operation.OperationDate;
             this.Id = id;
             this.Admin = admin;
+
+            this.Comment = operation.Comment;
         }
 
         public int Id { get; }
@@ -28,10 +30,12 @@ namespace KeyKeeper
 
         public string Type { get; }
 
-        public int RoomId { get; }
+        public string RoomId { get; }
 
         public DateTime OperationDate { get; }
 
         public string Admin { get; }
+
+        public string Comment { get; }
     }
 }

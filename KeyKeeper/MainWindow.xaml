@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KeyKeeper"
+        xmlns:predefined="clr-namespace:Predefined;assembly=Predefined"
         mc:Ignorable="d"
         Title="KeyKeeper" Height="450" Width="800" UseLayoutRounding="True">
     <Grid>
@@ -14,27 +15,32 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Главная">
-              <Grid>
+                <Grid>
                   <Grid.RowDefinitions>
                       <RowDefinition Height="40"></RowDefinition>
                       <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                  <Grid Name="Rooms" Grid.Row="1" Initialized="FrameworkElement_OnInitialized" ShowGridLines="True">
-                      <Grid.ColumnDefinitions>
-                          <ColumnDefinition></ColumnDefinition>
-                          <ColumnDefinition></ColumnDefinition>
-                          <ColumnDefinition></ColumnDefinition>
-                          <ColumnDefinition></ColumnDefinition>
-                          <ColumnDefinition></ColumnDefinition>
+                    <WrapPanel Name="SearchPanel" Grid.Row="0">
+                        <TextBox Name="tbSearch" Width="70" Margin="5" KeyDown="TbSearch_OnKeyDown"></TextBox>
+                        <Button Name="btnSearch" Margin="5" Width="50" Click="BtnSearch_OnClick">Поиск</Button>
+                        <WrapPanel Name="Filters" Margin="5">
+                            <RadioButton Name="rbAll" Margin="5 2" IsChecked="True">Все</RadioButton>
+                            <RadioButton Name ="rbFree" Margin="5 2">Свободные</RadioButton>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                      <Grid.RowDefinitions>
-                          <RowDefinition></RowDefinition>
-                          <RowDefinition></RowDefinition>
-                          <RowDefinition></RowDefinition>
-                          <RowDefinition></RowDefinition>
-                          <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                  </Grid>
+                        <ComboBox Name="cmbFloor" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" SelectedIndex="0">
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                        </ComboBox>
+                        <WrapPanel Grid.Column="1" Name="RoomsPanel" Initialized="FrameworkElement_OnInitialized">
+                        </WrapPanel>
+                    </Grid>
               </Grid>
             </TabItem>
             <TabItem Header="История операций" GotFocus="UIElement_OnGotFocus">
@@ -46,6 +52,7 @@
                         <DataGridTextColumn Header="Аудитория" Binding="{Binding RoomId}" Width="70"></DataGridTextColumn>
                         <DataGridTextColumn Header="Дата операции" Binding="{Binding OperationDate}" Width="200"></DataGridTextColumn>
                         <DataGridTextColumn Header="Администратор" Binding="{Binding Admin}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}" Width="100"></DataGridTextColumn>
                     </DataGrid.Columns>
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">

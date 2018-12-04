@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace KeyKeeper
@@ -37,7 +36,7 @@ namespace KeyKeeper
                 .ToList();
         }
 
-        public Operation GetLastGetKeyOperationForRoom(int roomId)
+        public Operation GetLastGetKeyOperationForRoom(string roomId)
         {
             return this.storage.Last(kvp => kvp.Value.RoomId == roomId && kvp.Value.Type == OperationType.GetKey).Value;
         }
